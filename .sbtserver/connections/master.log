@@ -1,0 +1,29 @@
+New log file opened at Tue Jan 12 15:06:50 YEKT 2016 by 3575@ygrabovskiy-pc
+Taking next connection to: 52607
+New client attempting to connect on port: 33795-52607
+  Address = /127.0.1.1:52607
+This client on port 33795 has uuid 241ca31d-0895-46b5-b789-a07768865685 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-241ca31d-0895-46b5-b789-a07768865685
+Taking next connection to: 52607
+New client attempting to connect on port: 33894-52607
+  Address = /127.0.1.1:52607
+Handshake exception on socket: 33894
+sbt.impl.ipc.HandshakeException: Unable to perform handshake
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:46)
+	at sbt.impl.ipc.MultiClientServer.<init>(IPC.scala:150)
+	at sbt.server.SbtServerSocketHandler$$anon$1.run(SbtServerSocketHandler.scala:43)
+Caused by: java.net.SocketException: Connection reset
+	at java.net.SocketInputStream.read(SocketInputStream.java:209)
+	at java.net.SocketInputStream.read(SocketInputStream.java:141)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:246)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:265)
+	at java.io.DataInputStream.readInt(DataInputStream.java:387)
+	at sbt.impl.ipc.Peer.receive(IPC.scala:95)
+	at sbt.impl.ipc.Peer.handshake(IPC.scala:49)
+	... 2 more
+Taking next connection to: 52607
+New client attempting to connect on port: 33895-52607
+  Address = /127.0.1.1:52607
+This client on port 33895 has uuid 06626d1e-d06d-40de-947d-29654980ef66 configName activator humanReadableName Activator protocolVersion 3 featureTags Vector()
+Connected Clients: activator-06626d1e-d06d-40de-947d-29654980ef66
+Taking next connection to: 52607
