@@ -1,0 +1,8 @@
+---
+
+#home: "/home/ygrabovskiy/test"
+java_home: "/opt/java/java8"
+#apps_dir: "{{home}}/apps"
+#sbt_home: "{{apps_dir}}/sbt"
+
+hub_config_file_path: "{{hub_home}}/appconf/application.conf"

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+RUNNING_PID="./RUNNING_PID"
+
+# Если процесс запущен, то надо его остановить
+if [ -f $RUNNING_PID ]; then
+        PROCESS=$(<"$RUNNING_PID")
+        echo "PROCESS $PROCESS"
+        ./stop.sh
+
+
+        for PID in 1 .. 20; do
+                PIDS=`ps cax | grep $PROCESS | grep -o '^[ ]*[0-9]*'`
+
+                if [ -z "$PIDS" ]; then
+                        break
+                fi
+                sleep 1
+        done
+
+        PIDS=`ps cax | grep $PROCESS | grep -o '^[ ]*[0-9]*'`
+        if [ ! -z "$PIDS" ]; then
+                echo -e "\033[31mСервер не остановлен, остался файл $RUNNING_PID \033[0m"
+                exit 0
+        fi
+fi
+
+echo -e "\033[32mdelete"
+touch ./nohup.out
+rm -f ./nohup.out
+
+rm -rf ./bin
+rm -rf ./lib
+
+echo -e "extract! \033[0m"
+tar -xf {{hub_tar_gz_path}}
+
+sleep 2
+
+./run.sh

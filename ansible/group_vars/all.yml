@@ -1,0 +1,15 @@
+---
+
+sbt_version: "0.13.9"
+sbt_archive_name: "sbt-{{sbt_version}}"
+sbt_archive_file: "{{sbt_archive_name}}.tgz"
+sbt_download_url: "https://dl.bintray.com/sbt/native-packages/sbt/{{sbt_version}}/{{sbt_archive_file}}"
+
+stageserver_ip: 192.168.240.153
+stageserver_user: gp
+stageserver_workspace: /opt/gp/stands/ygrabovskiy_space
+hub_home: "{{stageserver_workspace}}/hub"
+
+rmi_server_ip: 192.168.1.216
+
+hub_tar_gz_path: "{{hub_home}}/hub.tar.gz"

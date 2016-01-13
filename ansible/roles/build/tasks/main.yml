@@ -1,0 +1,25 @@
+---
+- name: Create {{sbt_home}}
+  file: path={{sbt_home}} state=directory recurse=yes
+
+- name: Download sbt v{{sbt_version}}
+  get_url: url={{sbt_download_url}}
+    dest={{apps_dir}}/{{sbt_archive_file}}
+
+- name: Unpack sbt
+  unarchive: src={{apps_dir}}/{{sbt_archive_file}} dest={{apps_dir}} copy=no
+
+- name: build with sbt
+  command: "{{sbt_home}}/bin/sbt -Dsbt.log.noformat=true -java-home {{java_home}} stage"  # clean remove for speed
+  args:
+    chdir:  "{{ playbook_dir }}/../"
+
+- name: Creating hub.tar.gz
+  command: "tar -czf ./hub.tar.gz ./lib ./bin"
+  args:
+    chdir:  "{{ playbook_dir }}/../target/universal/stage"
+
+#- name: copying hub.tar.gz to staging
+#  command: "/usr/bin/scp -i ~/.ssh/bigate_rsa -r ./hub.tar.gz {{ stageserver_user }}@{{ stageserver_ip}}:{{hub_tar_gz_path}}"
+#  args:
+#    chdir:  "{{ playbook_dir }}/../target/universal/stage"

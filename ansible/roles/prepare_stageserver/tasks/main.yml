@@ -1,0 +1,12 @@
+
+- name: create hub dir
+  file: path={{hub_home}} state=directory
+
+- name: copying "run" script to staging from templates
+  template: src="{{ playbook_dir }}/../scripts/stageserver/run.j2" dest={{hub_home}}/run.sh mode="u=rx,g=r,o=r"
+
+- name: copying "update" script to staging from templates
+  template: src="{{ playbook_dir }}/../scripts/stageserver/update.j2" dest={{hub_home}}/update.sh mode="u=rx,g=r,o=r"
+
+- name: copying "stop" script
+  copy: src="{{ playbook_dir }}/../scripts/stageserver/stop.sh" dest={{hub_home}}/stop.sh mode="u=rx,g=r,o=r"

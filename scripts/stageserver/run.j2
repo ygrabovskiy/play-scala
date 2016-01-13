@@ -1,0 +1,23 @@
+#!/bin/bash
+
+CONFIG_FILE_PATH="{{hub_config_file_path}}"
+HTTP_PORT="9007"
+export JAVA_HOME="{{java_home}}"
+export JAVA_OPTS="
+        -Xms2048m
+        -Xmx2048m
+
+        -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8100,suspend=n
+
+        -Djava.rmi.server.hostname={{rmi_server_ip}}
+        -Dcom.sun.management.jmxremote
+        -Dcom.sun.management.jmxremote.port=5100
+        -Dcom.sun.management.jmxremote.rmi.port=5100
+        -Dcom.sun.management.jmxremote.local.only=false
+        -Dcom.sun.management.jmxremote.authenticate=false
+        -Dcom.sun.management.jmxremote.ssl=false
+ "
+
+echo "Поехали!"
+nohup ./bin/play-scala -Dconfig.file=$CONFIG_FILE_PATH -Dfile.encoding=UTF8 -Dhttp.port=$HTTP_PORT $@  > output.txt 2>&1 &
+#((nohup ./bin/play-scala -Dconfig.file=$CONFIG_FILE_PATH -Dfile.encoding=UTF8 -Dhttp.port=$HTTP_PORT $@ 1>/dev/null 2>&1 ) &)

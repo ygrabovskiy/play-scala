@@ -1,0 +1,8 @@
+[local]
+localhost
+
+[build]
+buildserver ansible_host=localhost
+
+[stage]
+stageserver ansible_host=192.168.240.153 ansible_user=gp ansible_ssh_pass=1234qwer

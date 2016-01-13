@@ -1,0 +1,6 @@
+---
+
+home: "/home/ygrabovskiy/test"
+java_home: "/usr/lib/jvm/java-8-oracle"
+apps_dir: "{{home}}/apps"
+sbt_home: "{{apps_dir}}/sbt"

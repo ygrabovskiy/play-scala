@@ -1,0 +1,20 @@
+
+
+- name: copy archive
+  copy: src="{{ playbook_dir }}/../target/universal/stage/hub.tar.gz" dest="{{hub_tar_gz_path}}"
+
+- name: "update hub application({{hub_home}}/update.sh)"
+  shell: "./update.sh"
+#  async: 9999
+#  poll: 0
+  args:
+      chdir:  "{{hub_home}}"
+
+#
+#- name: test nohup
+#  shell: ./script.sh
+##  async: 9999
+##  poll: 0
+#  args:
+#    chdir:  "{{hub_home}}"
+

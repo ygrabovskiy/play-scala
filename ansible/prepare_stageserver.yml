@@ -1,0 +1,6 @@
+---
+
+- hosts: stageserver
+
+  roles:
+    - prepare_stageserver
