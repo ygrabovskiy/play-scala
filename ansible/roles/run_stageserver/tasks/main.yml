@@ -10,12 +10,18 @@
   args:
       chdir:  "{{hub_home}}"
 
-- action: uri url="http://{{stageserver_ip}}:{{app_port}}" return_content=yes
+- name: "waiting for app runnung"
+  wait_for: host={{ stageserver_ip }} port={{app_port}} timeout=10
+  delegate_to: localhost
+
+- name: "retrieve main page"
+  action: uri url="http://{{stageserver_ip}}:{{app_port}}" return_content=yes
   delegate_to: 127.0.0.1
   register: webpage
 
-- action: fail
-  when: "'AWESOME' not in webpage.content"
+- name: "check main page"
+  action: fail
+  when: "'ready' not in webpage.content"
 
 #
 #- name: test nohup
