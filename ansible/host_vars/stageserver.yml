@@ -7,4 +7,4 @@ java_home: "/opt/java/java8"
 
 hub_config_file_path: "{{hub_home}}/appconf/application.conf"
 
-app_port: 9000
+app_port: 9007
