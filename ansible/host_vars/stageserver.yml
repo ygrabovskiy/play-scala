@@ -6,3 +6,5 @@ java_home: "/opt/java/java8"
 #sbt_home: "{{apps_dir}}/sbt"
 
 hub_config_file_path: "{{hub_home}}/appconf/application.conf"
+
+app_port: 9000

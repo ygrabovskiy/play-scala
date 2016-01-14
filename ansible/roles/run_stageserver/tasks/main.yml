@@ -10,6 +10,9 @@
   args:
       chdir:  "{{hub_home}}"
 
+- action: uri url="http://{{stageserver_ip}}:{{app_port}}" return_content=yes
+  delegate_to: 127.0.0.1
+
 #
 #- name: test nohup
 #  shell: ./script.sh
